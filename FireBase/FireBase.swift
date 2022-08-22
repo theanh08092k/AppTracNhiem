@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 class FireBase: NSObject {
     static let firebase : FireBase = FireBase()
     private override init() {
@@ -44,5 +45,32 @@ class FireBase: NSObject {
             clousue(check)
         })
         
+    }
+    func creatAAcount(email: String, password: String, clousue: @escaping(_ respone : Bool) -> Void){
+        Auth.auth().createUser(withEmail: email, password: password){ authResult, error in
+            if error != nil {
+                clousue(false)
+            } else {
+                clousue(true)
+            }
+        }
+    }
+    func loginAccount(email: String, password: String, clousue: @escaping(_ respone : Bool) -> Void){
+        Auth.auth().signIn(withEmail: email, password: password) { user , error in
+            if error != nil {
+                clousue(false)
+            } else {
+                self.addInforUser(uid: user?.user.uid ?? "", numberQS: 0, timeLimit: 0, username: email )
+                clousue(true)
+            }
+        }
+    }
+    func addInforUser(uid: String, numberQS: Int, timeLimit: Int, username: String){
+        let object : [String : Any] = [
+                "numberOfQuestions" : numberQS,
+                "timeLimit" : timeLimit,
+                "userName" :  username
+        ]
+        database.child("Users").child(uid).setValue(object)
     }
 }

@@ -30,7 +30,17 @@ extension UIViewController {
         nextV.modalTransitionStyle = .flipHorizontal
         nextV.modalPresentationStyle = .fullScreen
         self.present(nextV, animated: true, completion: nil)
-        self.present(nextV, animated: true, completion: nil)
+    }
+}
+extension UITextField {
+    func setDefautText(text: String, color: UIColor, corner: Int? = nil) {
+        if corner != nil {
+            self.layer.cornerRadius = CGFloat(corner ?? 5)
+        } else {
+            self.layer.cornerRadius = CGFloat(corner ?? 5)
+        }
+        self.attributedPlaceholder =
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color])
     }
 }
 extension UILabel {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21223" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21204"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,50 +11,85 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVCL" customModule="AppTracNhiem" customModuleProvider="target">
             <connections>
                 <outlet property="btnExam" destination="UJ1-ur-lei" id="xmg-19-CwD"/>
+                <outlet property="lbTenNguoiDung" destination="hci-0L-LWP" id="H4c-Zo-1KS"/>
                 <outlet property="tbvListExam" destination="PGW-nJ-lLy" id="PJz-Jk-20G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh sách đề thi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwC-be-IS4">
-                    <rect key="frame" x="104.66666666666667" y="47" width="180.66666666666663" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ1-ur-lei">
-                    <rect key="frame" x="156.66666666666666" y="785" width="77" height="35"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Xus-fQ-TKP">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJ1-ur-lei">
+                    <rect key="frame" x="50" y="812" width="314" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="yCM-zz-PYP"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Vào thi"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Vào thi">
+                        <backgroundConfiguration key="background" image="button" imageContentMode="scaleAspectFit"/>
+                        <fontDescription key="titleFontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="17"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="clickExam:" destination="-1" eventType="touchUpInside" id="3h5-cB-Gzm"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PGW-nJ-lLy">
-                    <rect key="frame" x="20" y="82" width="350" height="688"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="30" y="192" width="354" height="572"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thi trắc nhiệm, xin chào" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYT-sH-l7y">
+                    <rect key="frame" x="20" y="65" width="185" height="24"/>
+                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                    <color key="textColor" red="0.46111702919999997" green="0.0322080031" blue="0.034575693310000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên người dùng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hci-0L-LWP">
+                    <rect key="frame" x="225" y="91" width="138" height="26"/>
+                    <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="18"/>
+                    <color key="textColor" red="0.46111702919999997" green="0.0322080031" blue="0.034575693310000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh sách đề thi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwC-be-IS4">
+                    <rect key="frame" x="97" y="144" width="220" height="40"/>
+                    <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="28"/>
+                    <color key="textColor" red="0.46111702919999997" green="0.0322080031" blue="0.034575693310000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="UJ1-ur-lei" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="10" id="2Jb-Jv-xVn"/>
-                <constraint firstItem="FwC-be-IS4" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="3EE-Rq-YwD"/>
-                <constraint firstItem="PGW-nJ-lLy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UMo-w0-Xs8"/>
-                <constraint firstItem="PGW-nJ-lLy" firstAttribute="top" secondItem="FwC-be-IS4" secondAttribute="bottom" constant="5" id="UwM-Vh-j7w"/>
-                <constraint firstItem="FwC-be-IS4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VwC-lP-0NN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PGW-nJ-lLy" secondAttribute="trailing" constant="20" id="adF-2F-Rqz"/>
-                <constraint firstItem="UJ1-ur-lei" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="bKw-d8-wGP"/>
-                <constraint firstItem="UJ1-ur-lei" firstAttribute="top" secondItem="PGW-nJ-lLy" secondAttribute="bottom" constant="15" id="fki-xK-XCO"/>
+                <constraint firstItem="Xus-fQ-TKP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="16B-tS-zEJ"/>
+                <constraint firstItem="hci-0L-LWP" firstAttribute="leading" secondItem="hYT-sH-l7y" secondAttribute="trailing" constant="20" id="4By-1G-3as"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UJ1-ur-lei" secondAttribute="trailing" constant="50" id="4Do-T6-7cr"/>
+                <constraint firstItem="UJ1-ur-lei" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="10" id="CQQ-6N-mhh"/>
+                <constraint firstItem="hci-0L-LWP" firstAttribute="top" secondItem="hYT-sH-l7y" secondAttribute="bottom" constant="2" id="FXm-pc-cbM"/>
+                <constraint firstItem="UJ1-ur-lei" firstAttribute="top" secondItem="PGW-nJ-lLy" secondAttribute="bottom" constant="48" id="KSe-bF-Luh"/>
+                <constraint firstAttribute="bottom" secondItem="Xus-fQ-TKP" secondAttribute="bottom" id="MN9-xz-eL5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PGW-nJ-lLy" secondAttribute="trailing" constant="30" id="MWr-2W-4Bc"/>
+                <constraint firstItem="UJ1-ur-lei" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="SMr-K7-KMw"/>
+                <constraint firstItem="FwC-be-IS4" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Vaj-XG-bm8"/>
+                <constraint firstItem="FwC-be-IS4" firstAttribute="top" secondItem="hci-0L-LWP" secondAttribute="bottom" constant="27" id="Vvr-pY-87p"/>
+                <constraint firstItem="hYT-sH-l7y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="21" id="fRP-qQ-zmd"/>
+                <constraint firstItem="hYT-sH-l7y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gbz-2V-Hmc"/>
+                <constraint firstItem="PGW-nJ-lLy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="lVj-Bi-12O"/>
+                <constraint firstItem="PGW-nJ-lLy" firstAttribute="top" secondItem="FwC-be-IS4" secondAttribute="bottom" constant="8" symbolic="YES" id="nCg-NE-hSJ"/>
+                <constraint firstItem="Xus-fQ-TKP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pTg-m5-A8s"/>
+                <constraint firstItem="Xus-fQ-TKP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yOi-vw-514"/>
             </constraints>
-            <point key="canvasLocation" x="130.76923076923077" y="-11.374407582938389"/>
+            <point key="canvasLocation" x="130.43478260869566" y="-11.383928571428571"/>
         </view>
     </objects>
     <resources>
+        <image name="background" width="1125" height="2436"/>
+        <image name="button" width="870" height="177"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

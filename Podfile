@@ -9,6 +9,8 @@ pod 'Firebase/Firestore'
 pod 'FirebaseFirestoreSwift'	
 pod 'Firebase/Database'
 pod 'Firebase/Core'
+pod 'FirebaseAuth'
+pod 'GoogleSignIn'
   target 'AppTracNhiemTests' do
     inherit! :search_paths
     # Pods for testing

@@ -200,7 +200,7 @@
                     <rect key="frame" x="0.0" y="107" width="390" height="662"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79c-m9-nVj">
-                            <rect key="frame" x="141" y="287" width="109" height="89"/>
+                            <rect key="frame" x="140.66666666666666" y="286.66666666666669" width="109" height="89"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="playpause" catalog="system"/>
                             <connections>
@@ -223,7 +223,6 @@
                 <constraint firstItem="QSm-ug-bJs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="868-uI-jAC"/>
                 <constraint firstItem="byM-fa-nCx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="KPW-tk-VgZ"/>
                 <constraint firstItem="QSm-ug-bJs" firstAttribute="top" secondItem="byM-fa-nCx" secondAttribute="bottom" constant="20" id="MhH-dF-0VJ"/>
-                <constraint firstItem="byM-fa-nCx" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Nhq-JM-pBR"/>
                 <constraint firstItem="5Ba-3t-1mG" firstAttribute="top" secondItem="k7U-ec-36n" secondAttribute="bottom" constant="30" id="QRL-oa-1fg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="byM-fa-nCx" secondAttribute="trailing" constant="10" id="UKw-gM-v68"/>
                 <constraint firstItem="QSm-ug-bJs" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VRo-hd-knA"/>

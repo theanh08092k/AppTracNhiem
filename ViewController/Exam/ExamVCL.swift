@@ -55,7 +55,7 @@ class ExamVCL: UIViewController {
         clvListQuestion.delegate = self
         clvListQuestion.dataSource = self
         
-        let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ExamVCL.update), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ExamVCL.update), userInfo: nil, repeats: true)
 
         
     }
@@ -105,25 +105,20 @@ class ExamVCL: UIViewController {
         case 1 :
             lbChoice1.backgroundColor = .link
             listAnswerNumber[numberQuestion] = 1
-            listAnswerText[numberQuestion] = lbChoice1.text!
-            break
+            listAnswerText[numberQuestion] = lbChoice1.text ?? ""
         case 2 :
             lbChoice2.backgroundColor = .link
             listAnswerNumber[numberQuestion] = 2
-            listAnswerText[numberQuestion] = lbChoice2.text!
-            break
+            listAnswerText[numberQuestion] = lbChoice2.text ?? ""
         case 3 :
             lbChoice3.backgroundColor = .link
             listAnswerNumber[numberQuestion] = 3
-            listAnswerText[numberQuestion] = lbChoice3.text!
-            break
+            listAnswerText[numberQuestion] = lbChoice3.text ?? ""
         case 4 :
             lbChoice4.backgroundColor = .link
             listAnswerNumber[numberQuestion] = 4
-            listAnswerText[numberQuestion] = lbChoice4.text!
-            break
+            listAnswerText[numberQuestion] = lbChoice4.text ?? ""
         default :
-            
             break
         }
     }
@@ -182,17 +177,17 @@ extension ExamVCL : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = clvListQuestion.dequeueReusableCell(withReuseIdentifier: "QuestionCTVCell", for: indexPath) as? QuestionCTVCell
-        cell!.btnNumber.setTitle("\(indexPath.row +  1 )", for: .normal)
-        cell?.callback = {
+        let cell = clvListQuestion.dequeueReusableCell(withReuseIdentifier: "QuestionCTVCell", for: indexPath) as! QuestionCTVCell
+        cell.btnNumber.setTitle("\(indexPath.row +  1 )", for: .normal)
+        cell.callback = {
             self.numberQuestion = indexPath.row
         }
         if listAnswerNumber[indexPath.row] != 0 {
-            cell?.btnNumber.backgroundColor = .cyan
+            cell.btnNumber.backgroundColor = .cyan
         } else{
-            cell?.btnNumber.backgroundColor = .systemBrown
+            cell.btnNumber.backgroundColor = .systemBrown
         }
-        return cell!
+        return cell
     }
     
     

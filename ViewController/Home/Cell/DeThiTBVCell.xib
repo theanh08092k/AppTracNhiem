@@ -16,35 +16,49 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button" translatesAutoresizingMaskIntoConstraints="NO" id="zPZ-sb-rIi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De thi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLO-hx-ZXA">
-                        <rect key="frame" x="16" y="34.333333333333336" width="224" height="20.333333333333336"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="23" y="24.333333333333329" width="224" height="28"/>
+                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8y-qJ-wii">
-                        <rect key="frame" x="258" y="57.666666666666664" width="55" height="20.333333333333336"/>
+                        <rect key="frame" x="238" y="46" width="55" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="e8y-qJ-wii" secondAttribute="trailing" constant="7" id="ZNX-8o-Esu"/>
-                    <constraint firstAttribute="bottom" secondItem="e8y-qJ-wii" secondAttribute="bottom" constant="11" id="xCN-Nn-rdA"/>
+                    <constraint firstItem="zPZ-sb-rIi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Jpb-be-G2Y"/>
+                    <constraint firstAttribute="trailing" secondItem="zPZ-sb-rIi" secondAttribute="trailing" id="ZFl-cR-0zz"/>
+                    <constraint firstAttribute="trailing" secondItem="e8y-qJ-wii" secondAttribute="trailing" constant="27" id="ZNX-8o-Esu"/>
+                    <constraint firstAttribute="bottom" secondItem="zPZ-sb-rIi" secondAttribute="bottom" id="iVg-nZ-kZt"/>
+                    <constraint firstItem="zPZ-sb-rIi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wxK-2h-ZGU"/>
+                    <constraint firstAttribute="bottom" secondItem="e8y-qJ-wii" secondAttribute="bottom" constant="22.666666666666671" id="xCN-Nn-rdA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ZLO-hx-ZXA" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="16" id="C2R-zU-0hf"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="ZLO-hx-ZXA" secondAttribute="trailing" constant="80" id="Z6t-hg-V6t"/>
-                <constraint firstItem="ZLO-hx-ZXA" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="sls-S5-FiL"/>
+                <constraint firstItem="ZLO-hx-ZXA" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="23" id="C2R-zU-0hf"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="ZLO-hx-ZXA" secondAttribute="trailing" constant="73" id="Z6t-hg-V6t"/>
+                <constraint firstItem="ZLO-hx-ZXA" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" constant="-6.1666666666666643" id="sls-S5-FiL"/>
             </constraints>
             <connections>
+                <outlet property="imageback" destination="zPZ-sb-rIi" id="ZbW-Wv-REf"/>
                 <outlet property="lbTileExam" destination="ZLO-hx-ZXA" id="3wl-yw-6kT"/>
                 <outlet property="lbTime" destination="e8y-qJ-wii" id="xgF-VF-lRN"/>
             </connections>
             <point key="canvasLocation" x="-18.46153846153846" y="4.62085308056872"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="button" width="870" height="177"/>
+    </resources>
 </document>
