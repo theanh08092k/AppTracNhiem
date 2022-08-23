@@ -55,13 +55,16 @@ class FireBase: NSObject {
             }
         }
     }
-    func loginAccount(email: String, password: String, clousue: @escaping(_ respone : Bool) -> Void){
+    func loginAccount(email: String, password: String, clousue: @escaping(_ respone : Bool,_ userLogin: User) -> Void){
         Auth.auth().signIn(withEmail: email, password: password) { user , error in
+            var userLogin = User(userName: "", uid: "")
             if error != nil {
-                clousue(false)
+                clousue(false, userLogin)
             } else {
                 self.addInforUser(uid: user?.user.uid ?? "", numberQS: 0, timeLimit: 0, username: email )
-                clousue(true)
+                userLogin.uid = user?.user.uid ?? ""
+                userLogin.userName = email
+                clousue(true, userLogin )
             }
         }
     }
@@ -72,5 +75,15 @@ class FireBase: NSObject {
                 "userName" :  username
         ]
         database.child("Users").child(uid).setValue(object)
+    }
+    func addHistory(user: User, history: History){
+        let random = Int.random(in: 100000000000000...999999999999999)
+        let object : [String : Any] = [
+            "id": random,
+            "playDate" : history.playDate,
+                "score" : history.score,
+                "time" :  history.time
+        ]
+        database.child("PlayHistory").child(user.uid).child(history.topic).child(String(random)).setValue(object)
     }
 }

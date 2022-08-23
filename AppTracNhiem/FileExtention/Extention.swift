@@ -13,6 +13,18 @@ extension NSObject {
     }
 }
 extension UIViewController {
+    func getTimeNow() -> String{
+        let now = Date()
+
+         let formatter = DateFormatter()
+
+         formatter.timeZone = TimeZone.current
+
+         formatter.dateFormat = "yyyy-MM-dd HH:mm"
+
+         let dateString = formatter.string(from: now)
+        return dateString
+    }
     func showAlert(title: String, infor: String, callback: (()-> Void)? = nil){
         let alert = UIAlertController(title: title,
                                       message: infor,  preferredStyle: .alert)

@@ -14,7 +14,7 @@ class HomeVCL: UIViewController {
     @IBOutlet weak var lbTenNguoiDung: UILabel!
     
     var numberChoise = -1
-    var textNameUser: String = ""
+    var user : User = User(userName: "", uid: "")
     var listExam: [Exam] = []
     var didSelectExam: Exam = Exam(title: "", listQuestion: [])
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class HomeVCL: UIViewController {
                              forCellReuseIdentifier: String(describing: DeThiTBVCell.self))
         tbvListExam.delegate = self
         tbvListExam.dataSource = self
-        lbTenNguoiDung.text = textNameUser
+        lbTenNguoiDung.text = user.userName
         // Get data exam
         FireBase.firebase.getQuestions { [weak self] data in
             DispatchQueue.main.async {
@@ -43,9 +43,13 @@ class HomeVCL: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     @IBAction func clickExam(_ sender: Any) {
-        self.pushView(storybard: UIStoryboard(name: "Main", bundle: nil), nextView: ExamVCL.self) { view  in
-            view.exam = self.didSelectExam
+        if numberChoise > 0  {
+            self.pushView(storybard: UIStoryboard(name: "Main", bundle: nil), nextView: ExamVCL.self) { view  in
+                view.exam = self.didSelectExam
+                view.user = self.user
+            }
         }
+        
     }
     
     

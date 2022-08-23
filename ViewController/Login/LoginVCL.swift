@@ -44,19 +44,19 @@ class LoginVCL: UIViewController {
         }
     }
     @IBAction func clickLogin(_ sender: Any) {
-        let user = textAccount.text ?? ""
+        let userName = textAccount.text ?? ""
         let pass = textPassword.text ?? ""
-        FireBase.firebase.loginAccount(email: user, password: pass, clousue: { [weak self] respone in
+        FireBase.firebase.loginAccount(email: userName, password: pass, clousue: { [weak self] respone, user   in
             guard let self = self  else {return}
             DispatchQueue.main.async {
                 if respone == false {
                     self.showAlert(title: "Error", infor: "Sai thông tin đăng nhập")
                 } else {
-                    UserDefaults.standard.set(user, forKey: "UserName")
+                    UserDefaults.standard.set(userName, forKey: "UserName")
                     UserDefaults.standard.set(pass, forKey: "PassWord")
                     self.navigationController?.popViewController(animated: true)
                     self.pushView(storybard: UIStoryboard(name: "Main", bundle: nil), nextView: HomeVCL.self) { view  in
-                        view.textNameUser = user
+                        view.user = user
                     }
                 }
             }

@@ -36,6 +36,7 @@ class ExamVCL: UIViewController {
     }
     var listAnswerText : [String] = []
     var exam: Exam = Exam(title: "", listQuestion: [])
+    var user: User = User(userName: "", uid: "")
     var titleView : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,6 +201,7 @@ class ExamVCL: UIViewController {
                 score += 1
             }
         }
+        FireBase.firebase.addHistory(user: user, history: History(topic: exam.title, playDate: self.getTimeNow(), score: score, time: 600 - count))
         return score
     }
     @IBAction func clickOkExam(_ sender: Any) {
