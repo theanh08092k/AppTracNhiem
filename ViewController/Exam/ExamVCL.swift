@@ -13,14 +13,14 @@ class ExamVCL: UIViewController {
     @IBOutlet weak var btnOkExam: UIButton!
     @IBOutlet weak var lbTime: UILabel!
     @IBOutlet weak var clvListQuestion: UICollectionView!
-    @IBOutlet weak var lbChoice4: UILabel!
-    @IBOutlet weak var lbChoice2: UILabel!
-    @IBOutlet weak var lbChoice1: UILabel!
     @IBOutlet weak var lbInforQuestion: UILabel!
-    @IBOutlet weak var lbChoice3: UILabel!
     
+    @IBOutlet weak var btnChoise4: UIButton!
+    @IBOutlet weak var btnChoise3: UIButton!
+    @IBOutlet weak var btnChoise2: UIButton!
+    @IBOutlet weak var btnChoise1: UIButton!
     @IBOutlet weak var viewStop: UIView!
-    var numberQuestion: Int = 1{
+    var numberQuestion: Int = 0{
         didSet{
             setUpQuetions(number: numberQuestion)
             setChoiseAnswer(listAnswerNumber[numberQuestion])
@@ -29,16 +29,16 @@ class ExamVCL: UIViewController {
     }
     var countStop = 0
     var count = 600
-    var listAnswerNumber : [Int] = []
+    var listAnswerNumber : [Int] = []{
+        didSet{
+            clvListQuestion.reloadData()
+        }
+    }
     var listAnswerText : [String] = []
     var exam: Exam = Exam(title: "", listQuestion: [])
     var titleView : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        lbChoice1.addActionClick(self, action: #selector(clickChoice1(tapGestureRecognizer:)))
-        lbChoice2.addActionClick(self, action: #selector(clickChoice2(tapGestureRecognizer:)))
-        lbChoice3.addActionClick(self, action: #selector(clickChoice3(tapGestureRecognizer:)))
-        lbChoice4.addActionClick(self, action: #selector(clickChoice4(tapGestureRecognizer:)))
         viewStop.isHidden = true
         
         for _ in 1...exam.listQuestion.count {
@@ -50,14 +50,51 @@ class ExamVCL: UIViewController {
         
         clvListQuestion.register(UINib(nibName: "QuestionCTVCell", bundle: nil), forCellWithReuseIdentifier: "QuestionCTVCell")
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 50, height: 50)
+        layout.itemSize = CGSize(width: 60, height: 60)
+        layout.scrollDirection = .horizontal
         clvListQuestion.collectionViewLayout = layout
         clvListQuestion.delegate = self
         clvListQuestion.dataSource = self
         
         _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ExamVCL.update), userInfo: nil, repeats: true)
-
         
+        btnChoise1.setContrainLabel(-10, 10, 20, 10)
+        btnChoise2.setContrainLabel(-10, 10, 20, 10)
+        btnChoise3.setContrainLabel(-10, 10, 20, 10)
+        btnChoise4.setContrainLabel(-10, 10, 20, 10)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+            swipeRight.direction = .right
+            self.view.addGestureRecognizer(swipeRight)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+            swipeLeft.direction = .left
+            self.view.addGestureRecognizer(swipeLeft)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+
+            switch swipeGesture.direction {
+            case .right:
+                if numberQuestion > 0 {
+                    numberQuestion -= 1
+                }
+            case .left:
+                if numberQuestion < exam.listQuestion.count - 1{
+                    numberQuestion += 1
+                }
+            default:
+                break
+            }
+        }
     }
     @objc func update() {
         if countStop == 0 {
@@ -68,56 +105,61 @@ class ExamVCL: UIViewController {
                 lbTime.text = "Thời gian thi : \(min):\(secon)"
             } else{
                 self.showAlert(title: "Hết giờ !!! Điểm của bạn là ", infor: " \(self.finishExam()) / \(self.exam.listQuestion.count)") {
-                    self.dismiss(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 
             }
         }
         
     }
-    @objc func clickChoice1(tapGestureRecognizer: UITapGestureRecognizer) {
-        setChoiseAnswer(1)
+    
+    @IBAction func clickD(_ sender: Any) {
+        setChoiseAnswer(4)
     }
-    @objc func clickChoice2(tapGestureRecognizer: UITapGestureRecognizer) {
-        setChoiseAnswer(2)
-    }
-    @objc func clickChoice3(tapGestureRecognizer: UITapGestureRecognizer) {
+    @IBAction func clickC(_ sender: Any) {
         setChoiseAnswer(3)
     }
-    @objc func clickChoice4(tapGestureRecognizer: UITapGestureRecognizer) {
-        setChoiseAnswer(4)
+    @IBAction func clickB(_ sender: Any) {
+        setChoiseAnswer(2)
+    }
+    @IBAction func clickA(_ sender: Any) {
+        setChoiseAnswer(1)
     }
     func setUpQuetions(number: Int){
         let question = exam.listQuestion[numberQuestion]
         lbSTTQuestion.text = "Câu hỏi \(numberQuestion + 1) : "
         lbInforQuestion.text = question.question
-        lbChoice1.text = question.choise1
-        lbChoice2.text = question.choise2
-        lbChoice3.text = question.choise3
-        lbChoice4.text = question.choise4
+        btnChoise1.setTitle(question.choise1, for: .normal)
+        btnChoise2.setTitle(question.choise2, for: .normal)
+        btnChoise3.setTitle(question.choise3, for: .normal)
+        btnChoise4.setTitle(question.choise4, for: .normal)
+        
+        
     }
     func setChoiseAnswer(_ answer: Int){
-        lbChoice4.backgroundColor = .lightGray
-        lbChoice2.backgroundColor = .lightGray
-        lbChoice3.backgroundColor = .lightGray
-        lbChoice1.backgroundColor = .lightGray
+        let image = UIImage(named: "unchoisAns.png")
+        btnChoise1.setBackgroundImage(image, for:  UIControl.State.normal)
+        btnChoise2.setBackgroundImage(image, for:  UIControl.State.normal)
+        btnChoise3.setBackgroundImage(image, for:  UIControl.State.normal)
+        btnChoise4.setBackgroundImage(image, for:  UIControl.State.normal)
+    
         switch (answer){
         case 1 :
-            lbChoice1.backgroundColor = .link
+            btnChoise1.setBackgroundImage(UIImage(named: "choiceAns" ), for: .normal)
             listAnswerNumber[numberQuestion] = 1
-            listAnswerText[numberQuestion] = lbChoice1.text ?? ""
+            listAnswerText[numberQuestion] = btnChoise1.title(for: .normal) ?? ""
         case 2 :
-            lbChoice2.backgroundColor = .link
+            btnChoise2.setBackgroundImage(UIImage(named: "choiceAns"), for: .normal)
             listAnswerNumber[numberQuestion] = 2
-            listAnswerText[numberQuestion] = lbChoice2.text ?? ""
+            listAnswerText[numberQuestion] = btnChoise2.title(for: .normal) ?? ""
         case 3 :
-            lbChoice3.backgroundColor = .link
+            btnChoise3.setBackgroundImage(UIImage(named: "choiceAns"), for: .normal)
             listAnswerNumber[numberQuestion] = 3
-            listAnswerText[numberQuestion] = lbChoice3.text ?? ""
+            listAnswerText[numberQuestion] = btnChoise3.title(for: .normal) ?? ""
         case 4 :
-            lbChoice4.backgroundColor = .link
+            btnChoise4.setBackgroundImage(UIImage(named: "choiceAns"), for: .normal)
             listAnswerNumber[numberQuestion] = 4
-            listAnswerText[numberQuestion] = lbChoice4.text ?? ""
+            listAnswerText[numberQuestion] = btnChoise4.title(for: .normal) ?? ""
         default :
             break
         }
@@ -138,7 +180,7 @@ class ExamVCL: UIViewController {
     @IBAction func clickBack(_ sender: Any) {
         self.showAlert(title: "Chú ý", infor: "Bạn có muốn chấm điểm luôn không ?") {
             self.showAlert(title: "Điểm của bạn là ", infor: " \(self.finishExam()) / \(self.exam.listQuestion.count)") {
-                self.dismiss(animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -163,7 +205,7 @@ class ExamVCL: UIViewController {
     @IBAction func clickOkExam(_ sender: Any) {
         self.showAlert(title: "Chú ý", infor: "Bạn có muốn chấm điểm luôn không ?") {
             self.showAlert(title: "Điểm của bạn là ", infor: " \(self.finishExam()) / \(self.exam.listQuestion.count)") {
-                self.dismiss(animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -177,17 +219,25 @@ extension ExamVCL : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = clvListQuestion.dequeueReusableCell(withReuseIdentifier: "QuestionCTVCell", for: indexPath) as! QuestionCTVCell
-        cell.btnNumber.setTitle("\(indexPath.row +  1 )", for: .normal)
-        cell.callback = {
-            self.numberQuestion = indexPath.row
+        if let cell = clvListQuestion.dequeueReusableCell(withReuseIdentifier: "QuestionCTVCell", for: indexPath) as? QuestionCTVCell {
+            if indexPath.row == numberQuestion {
+                cell.btnNumber.setTitleColor(.link, for: .normal)
+            } else {
+                cell.btnNumber.setTitleColor(.white, for: .normal)
+            }
+            cell.btnNumber.setTitle("\(indexPath.row +  1 )", for: .normal)
+            cell.callback = {
+                self.numberQuestion = indexPath.row
+            }
+            if listAnswerNumber[indexPath.row] != 0 {
+                cell.btnNumber.backgroundColor = .systemRed
+            } else{
+                cell.btnNumber.backgroundColor = .darkGray
+            }
+            return cell
         }
-        if listAnswerNumber[indexPath.row] != 0 {
-            cell.btnNumber.backgroundColor = .cyan
-        } else{
-            cell.btnNumber.backgroundColor = .systemBrown
-        }
-        return cell
+        return UICollectionViewCell()
+        
     }
     
     

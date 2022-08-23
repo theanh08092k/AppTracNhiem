@@ -148,17 +148,9 @@
 			path = Exam;
 			sourceTree = "<group>";
 		};
-		52108F9E28ABA09800D3FEB2 /* Result */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Result;
-			sourceTree = "<group>";
-		};
 		52108F9F28ABA0D100D3FEB2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				52108F9E28ABA09800D3FEB2 /* Result */,
 				52108F9D28ABA08800D3FEB2 /* Exam */,
 				52108F9C28ABA02900D3FEB2 /* Home */,
 				52108F9B28ABA01800D3FEB2 /* Login */,
@@ -230,11 +222,9 @@
 		52F71B1C28AB6E020009F91E = {
 			isa = PBXGroup;
 			children = (
-				5282B68128B370E8002A5856 /* Image */,
 				529C720328ACBDB90073D63F /* FireBase */,
 				52108F9F28ABA0D100D3FEB2 /* ViewController */,
 				52108FA028ABA0E100D3FEB2 /* Model */,
-				529C71F728AC83170073D63F /* FileExtention */,
 				52F71B2728AB6E020009F91E /* AppTracNhiem */,
 				52F71B4128AB6E050009F91E /* AppTracNhiemTests */,
 				52F71B4B28AB6E050009F91E /* AppTracNhiemUITests */,
@@ -257,6 +247,8 @@
 		52F71B2728AB6E020009F91E /* AppTracNhiem */ = {
 			isa = PBXGroup;
 			children = (
+				529C71F728AC83170073D63F /* FileExtention */,
+				5282B68128B370E8002A5856 /* Image */,
 				52F71B2828AB6E020009F91E /* AppDelegate.swift */,
 				52F71B2A28AB6E020009F91E /* SceneDelegate.swift */,
 				52F71B3428AB6E050009F91E /* Assets.xcassets */,

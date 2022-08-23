@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21204"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,10 +17,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9h-F3-ncr">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="1"/>
+                        <buttonConfiguration key="configuration" style="plain" title="1" cornerStyle="medium"/>
                         <connections>
                             <action selector="clickButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="X1b-Gk-eHo"/>
                         </connections>
@@ -29,11 +29,12 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="x9h-F3-ncr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6Dj-Ls-4st"/>
-                <constraint firstItem="x9h-F3-ncr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gwe-eM-a4i"/>
-                <constraint firstAttribute="trailing" secondItem="x9h-F3-ncr" secondAttribute="trailing" id="SbK-ux-MwK"/>
-                <constraint firstAttribute="bottom" secondItem="x9h-F3-ncr" secondAttribute="bottom" id="yIL-1P-vCi"/>
+                <constraint firstAttribute="bottom" secondItem="x9h-F3-ncr" secondAttribute="bottom" constant="5" id="BkE-Zr-Z7C"/>
+                <constraint firstItem="x9h-F3-ncr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="HRj-CV-4ZC"/>
+                <constraint firstItem="x9h-F3-ncr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="gsG-Fo-5k0"/>
+                <constraint firstAttribute="trailing" secondItem="x9h-F3-ncr" secondAttribute="trailing" constant="5" id="px2-PI-NLk"/>
             </constraints>
             <connections>
                 <outlet property="btnNumber" destination="x9h-F3-ncr" id="OML-MW-vrk"/>
@@ -41,9 +42,4 @@
             <point key="canvasLocation" x="130.76923076923077" y="-11.374407582938389"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

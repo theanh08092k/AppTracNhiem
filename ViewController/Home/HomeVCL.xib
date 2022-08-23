@@ -40,7 +40,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PGW-nJ-lLy">
-                    <rect key="frame" x="30" y="192" width="354" height="572"/>
+                    <rect key="frame" x="30" y="209" width="354" height="555"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
@@ -80,7 +80,7 @@
                 <constraint firstItem="hYT-sH-l7y" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="21" id="fRP-qQ-zmd"/>
                 <constraint firstItem="hYT-sH-l7y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gbz-2V-Hmc"/>
                 <constraint firstItem="PGW-nJ-lLy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="lVj-Bi-12O"/>
-                <constraint firstItem="PGW-nJ-lLy" firstAttribute="top" secondItem="FwC-be-IS4" secondAttribute="bottom" constant="8" symbolic="YES" id="nCg-NE-hSJ"/>
+                <constraint firstItem="PGW-nJ-lLy" firstAttribute="top" secondItem="FwC-be-IS4" secondAttribute="bottom" constant="25" id="nCg-NE-hSJ"/>
                 <constraint firstItem="Xus-fQ-TKP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pTg-m5-A8s"/>
                 <constraint firstItem="Xus-fQ-TKP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yOi-vw-514"/>
             </constraints>

@@ -13,12 +13,12 @@ class HomeVCL: UIViewController {
     @IBOutlet weak var tbvListExam: UITableView!
     @IBOutlet weak var lbTenNguoiDung: UILabel!
     
+    var numberChoise = -1
     var textNameUser: String = ""
     var listExam: [Exam] = []
     var didSelectExam: Exam = Exam(title: "", listQuestion: [])
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tbvListExam.register(UINib(nibName: String(describing: DeThiTBVCell.self), bundle: nil),
                              forCellReuseIdentifier: String(describing: DeThiTBVCell.self))
         tbvListExam.delegate = self
@@ -34,12 +34,18 @@ class HomeVCL: UIViewController {
             }
         }
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     @IBAction func clickExam(_ sender: Any) {
-        let nextView = ExamVCL(nibName: "ExamVCL", bundle: nil)
-        nextView.exam = didSelectExam
-        nextView.modalPresentationStyle = .fullScreen
-        present(nextView, animated: true)
+        self.pushView(storybard: UIStoryboard(name: "Main", bundle: nil), nextView: ExamVCL.self) { view  in
+            view.exam = self.didSelectExam
+        }
     }
     
     
@@ -54,6 +60,11 @@ extension HomeVCL : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tbvListExam.dequeueReusableCell(withIdentifier: "DeThiTBVCell", for: indexPath) as! DeThiTBVCell
+        if indexPath.row == numberChoise {
+            cell.imageback.isHighlighted = true
+        } else {
+            cell.imageback.isHighlighted = false
+        }
         cell.lbTileExam.text = listExam[indexPath.row].title
         cell.lbTime.text = "10:00"
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -61,6 +72,8 @@ extension HomeVCL : UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectExam = listExam[indexPath.row]
+        numberChoise = indexPath.row
+        tbvListExam.reloadData()
     }
     
 }

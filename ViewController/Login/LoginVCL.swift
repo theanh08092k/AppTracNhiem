@@ -26,7 +26,10 @@ class LoginVCL: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     @IBAction func clickRegister(_ sender: Any) {
         let userAccount = textAccount.text ?? ""
         let userPassword = textPassword.text ?? ""
@@ -44,17 +47,17 @@ class LoginVCL: UIViewController {
         let user = textAccount.text ?? ""
         let pass = textPassword.text ?? ""
         FireBase.firebase.loginAccount(email: user, password: pass, clousue: { [weak self] respone in
-            guard let self = self else {return}
+            guard let self = self  else {return}
             DispatchQueue.main.async {
                 if respone == false {
                     self.showAlert(title: "Error", infor: "Sai thông tin đăng nhập")
                 } else {
                     UserDefaults.standard.set(user, forKey: "UserName")
                     UserDefaults.standard.set(pass, forKey: "PassWord")
-                    let nextView = HomeVCL(nibName: "HomeVCL", bundle: nil)
-                    nextView.modalPresentationStyle = .fullScreen
-                    nextView.textNameUser = user
-                    self.present(nextView, animated: true)
+                    self.navigationController?.popViewController(animated: true)
+                    self.pushView(storybard: UIStoryboard(name: "Main", bundle: nil), nextView: HomeVCL.self) { view  in
+                        view.textNameUser = user
+                    }
                 }
             }
         })

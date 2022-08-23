@@ -12,6 +12,7 @@ class QuestionCTVCell: UICollectionViewCell {
     @IBOutlet weak var btnNumber: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnNumber.layer.cornerRadius = 15
         // Initialization code
     }
 
